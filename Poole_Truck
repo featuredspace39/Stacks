@@ -1,0 +1,69 @@
+import java.util.*;
+
+public class Truck_Poole {
+    private int packageCapacity;
+    private String truckArea;
+
+    private double weightCapacity;
+    private String truckLocation;
+    private boolean inWarehouse;
+    private Stack<Package_Poole> packagesInTruck;
+
+
+    public Truck_Poole(int newPackageCapacity, double newWeightCapacity, String newTruckArea, String newTruckLocation){
+        packageCapacity = newPackageCapacity;
+        truckLocation = newTruckLocation;
+        weightCapacity = newWeightCapacity;
+        truckArea = newTruckArea;
+        this.packagesInTruck = new Stack<>();
+    }
+
+    public int packagesCarrying(){
+        return packagesInTruck.size();
+    }
+
+    public double findTotalWeight(){
+        double totalWeight = 0.0;
+        for(Package_Poole p : packagesInTruck){
+            totalWeight += p.getWeight();
+        }
+        return totalWeight;
+    }
+
+    public String loadPackage(Package_Poole newPackage){
+       if (packagesCarrying() >= packageCapacity|| findTotalWeight() > weightCapacity){
+        return "Truck is ready to be delivered";
+       }
+       else { packagesInTruck.push(newPackage); }
+
+       return "";
+    }
+
+    public String findNextLocation(){
+        Package_Poole nextPackage = packagesInTruck.peek();
+        return nextPackage.getAddress();
+    }
+
+    public void unloadPackage() { packagesInTruck.pop(); }
+
+    public Stack<Package_Poole> getStack(){
+        return packagesInTruck;
+    }
+
+    public String getTruckArea(){
+        return truckArea;
+    }
+
+    public void setTruckStatus(boolean newWarehouse){
+        this.inWarehouse = newWarehouse;
+
+    }
+
+
+
+
+    public String toString(){
+        return "Packages in truck:" + this.packagesInTruck;
+    }
+
+}
