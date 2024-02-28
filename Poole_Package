@@ -1,0 +1,49 @@
+public class Package_Poole {
+private double weight;
+private String area;
+private String address;
+private boolean isDelivered;
+
+public Package_Poole(double weight, String area, String address, boolean isDelivered){
+    this.weight = weight;
+    this.area = area;
+    this.address = address;
+    this.isDelivered = isDelivered;
+}
+
+public double getWeight(){
+    return weight;
+}
+
+public String getArea(){
+    return area;
+}
+
+public String getAddress(){
+    return address;
+}
+public boolean getIsDelivered(){
+    return isDelivered;
+}
+
+public void setWeight(double newWeight){
+    this.weight = newWeight;
+}
+
+public void setArea(String newArea){
+    this.area = newArea;
+}
+
+public void setAddres(String newAddress){
+    this.address = newAddress;
+}
+
+public void setIsDelivered(boolean newIsDelivered){
+    this.isDelivered = newIsDelivered;
+}
+
+public String toString(){
+    return " Weight: " + this.weight + " Area: " + this.area + " Address: " + this.address + " Is Delivered: " + this.isDelivered;
+}
+
+}
