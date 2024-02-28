@@ -1,0 +1,73 @@
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class BathroomChallenge_Poole {
+    public static void main(String[] args) {
+
+       Bathroom_Poole bathroom1 = new Bathroom_Poole(3);
+        Bathroom_Poole bathroom2 = new Bathroom_Poole(2);
+
+        Student_Poole student1 = new Student_Poole(1,"James","Washington");
+        Student_Poole student2 = new Student_Poole(2,"David","Monte");
+        Student_Poole student3 = new Student_Poole(3,"Charlie","Jackson");
+        Student_Poole student4 = new Student_Poole(4,"Johnny","Johnson");
+        Student_Poole student5 = new Student_Poole(5,"Davis","Davidson");
+        Student_Poole student6 = new Student_Poole(6,"Rachel","Bobson");
+        Student_Poole student7 = new Student_Poole(7,"Chuck","Gary");
+        Student_Poole student8 = new Student_Poole(8,"John","Smith");
+        Student_Poole student9 = new Student_Poole(9,"John","Doe");
+        Student_Poole student10 = new Student_Poole(10,"Jane","Doe");
+        Student_Poole student11 = new Student_Poole(11,"Janette","Reed");
+        Student_Poole student12 = new Student_Poole(12,"Michele","Mickey");
+
+        bathroom1.addStudent(student1);
+        bathroom1.addStudent(student2);
+        bathroom1.addStudent(student9);
+        bathroom1.addStudent(student8);
+        bathroom1.addStudent(student7);
+
+        bathroom1.advanceLine();
+        bathroom1.advanceLine();
+        bathroom1.advanceLine();
+        bathroom1.advanceLine();
+        bathroom1.advanceLine();
+
+
+        bathroom2.addStudent(student11);
+        bathroom2.addStudent(student10);
+        bathroom2.addStudent(student6);
+        bathroom2.addStudent(student12);
+
+        bathroom2.advanceLine();
+        bathroom2.advanceLine();
+        bathroom2.advanceLine();
+        bathroom2.advanceLine();
+
+        System.out.println(bathroom1.getInsideBathroom());
+        System.out.println(bathroom2.getInsideBathroom());
+
+        System.out.println(bathroom1.findStudent(student1));
+        System.out.println(bathroom1.findStudent(student7));
+        System.out.println(bathroom2.findStudent(student1));
+        System.out.println(bathroom1.findStudent(student5));
+
+        bathroom1.studentExit(student1);
+        bathroom2.studentExit(student10);
+
+        bathroom1.test();
+        bathroom2.test();
+
+        bathroom1.clearBathroom();
+        bathroom1.test();
+
+        bathroom1.setCapacity(15);
+
+
+
+
+
+
+
+
+        }
+    }
