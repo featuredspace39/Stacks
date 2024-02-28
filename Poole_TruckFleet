@@ -1,0 +1,70 @@
+import java.util.concurrent.LinkedTransferQueue;
+import java.util.*;
+
+public class TruckFleet_Poole {
+    private LinkedTransferQueue<Truck_Poole> truckFleet;
+    private ArrayList<Package_Poole> warehouse;
+    
+    public TruckFleet_Poole(){
+        truckFleet = new LinkedTransferQueue<>();
+        warehouse = new ArrayList<Package_Poole>();
+    }
+    
+    public void addTruck(Truck_Poole myTruck){
+        truckFleet.add(myTruck);
+    }
+    
+    public void addPackage(Package_Poole myPackage){
+        boolean loaded = false;
+        Iterator<Truck_Poole> iterator = truckFleet.iterator();
+        
+        while(iterator.hasNext() && !loaded){
+            Truck_Poole nextTruck = iterator.next();
+            
+            if(nextTruck.getTruckArea().equals(myPackage.getArea())){
+                String result = nextTruck.loadPackage(myPackage);
+                if (result.isEmpty()){
+                    loaded = true;
+                }
+            }
+        }
+        
+        if (!loaded){
+            warehouse.add(myPackage);
+        }
+    }
+    
+    public String findPackage(Package_Poole myPackage) {
+        if (warehouse.contains(myPackage)) return "Package is in warehouse";
+
+        Iterator<Truck_Poole> iterator = truckFleet.iterator();
+        int position = 1;
+        while (iterator.hasNext()) {
+            Truck_Poole nextTruck = iterator.next();
+            Stack<Package_Poole> packages = nextTruck.getStack();
+            Iterator<Package_Poole> iterator2 = packages.iterator();
+            while (iterator2.hasNext()) {
+                Package_Poole nextPackage = iterator2.next();
+                if (nextPackage.equals(myPackage)) {
+                    return "Package is in truck";
+                }
+            }
+        }
+        
+        return "Package not found";
+    }
+
+    
+    public String findtruck(Truck_Poole myTruck){
+        if(truckFleet.contains(myTruck)){
+            return "Truck is in fleet";
+        }
+        else {
+            return "Truck is not in fleet";
+        }
+    }
+
+    public void test(){
+        return;
+    }
+}
