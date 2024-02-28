@@ -1,0 +1,37 @@
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class TruckChallenge_Poole {
+    public static void main(String[] args) {
+        TruckFleet_Poole warehouse = new TruckFleet_Poole();
+        Truck_Poole truck1 = new Truck_Poole(15,200,"Freehold","Truck In Warehouse");
+        Truck_Poole truck2 = new Truck_Poole(7,100,"Manalapan","Truck In Warehouse");
+        Truck_Poole truck3 = new Truck_Poole(2,75,"Colts Neck","Truck In Warehouse");
+        Truck_Poole truck4 = new Truck_Poole(25,300,"Howell","Truck In Warehouse");
+        Truck_Poole truck5 = new Truck_Poole(21,250,"Marlboro","Truck In Warehouse");
+
+        Package_Poole package1 = new Package_Poole(20.0, "Manalapan","101 Road St",false);
+        Package_Poole package2 = new Package_Poole(100.0, "Manalapan","300 Street Rd",false);
+        Package_Poole package3 = new Package_Poole(150.0, "Freehold","32 Avenue Rd",false);
+        Package_Poole package4 = new Package_Poole(10.0, "Freehold","1 Main St",false);
+        Package_Poole package5 = new Package_Poole(15.0, "Freehold","15 Temple Rd",false);
+        Package_Poole package6 = new Package_Poole(16.0, "Manalapan","3 My Rd",false);
+        Package_Poole package7 = new Package_Poole(1.0, "Marlboro","4 Goldstein Way",false);
+        Package_Poole package8 = new Package_Poole(15.0, "Marlboro","15 Goldstein Way",false);
+        Package_Poole package9 = new Package_Poole(35.0, "Freehold","53 CompSci Ct",false);
+        Package_Poole package10 = new Package_Poole(54.0, "Marlboro","32 ColtsNeck Rd",false);
+
+
+        warehouse.test();
+
+        System.out.println(truck1.findNextLocation());
+        System.out.println(truck2.findNextLocation());
+        System.out.println(truck3.findNextLocation());
+        System.out.println(truck4.findNextLocation());
+        System.out.println(truck5.findNextLocation());
+
+
+
+
+        }
+    }
