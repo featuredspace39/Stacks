@@ -1,0 +1,53 @@
+public class Student_Poole {
+
+
+//linked transfer queue for line
+
+
+private int ID;
+private String firstName;
+private String lastName;
+
+
+
+public boolean equals(Student_Poole other){
+    return ID == other.getID();
+}
+
+public Student_Poole(int ID, String firstName, String lastName){
+    this.ID = ID;
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+
+public int getID(){
+    return ID;
+}
+public String getFirstName() {
+    return firstName;
+}
+
+public String getLastName(){
+    return lastName;
+}
+
+public void setID(int newID){
+    this.ID = newID;
+}
+
+public void setFirstName(String newFirstName){
+    this.firstName = newFirstName;
+    }
+
+public void setLastName(String newLastName){
+    this.lastName = newLastName;
+}
+
+
+public String toString(){
+    return "First Name - " + this.firstName + " Last Name - " + this.lastName + " ID - " + this.ID;
+
+
+}
+
+}
