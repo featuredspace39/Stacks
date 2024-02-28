@@ -1,0 +1,117 @@
+import java.util.*;
+import java.util.concurrent.LinkedTransferQueue;
+
+public class Bathroom_Poole {
+
+    //need additional list for who is in the bathroom
+    //need additional list for who is out of the bathroom
+
+    private LinkedTransferQueue<Student_Poole> line;
+    private ArrayList<Student_Poole> insideBathroom;
+    private ArrayList<Student_Poole> outsideBathroom;
+    private double capacity;
+
+    public Bathroom_Poole(double capacity){
+        this.capacity = capacity;
+        line = new LinkedTransferQueue<Student_Poole>();
+        insideBathroom = new ArrayList<Student_Poole>();
+        outsideBathroom = new ArrayList<Student_Poole>();
+    }
+
+    public void setCapacity(int newCapacity){
+        capacity = newCapacity;
+    }
+
+    public void clearBathroom(){
+        line = new LinkedTransferQueue<>();
+        insideBathroom = new ArrayList<Student_Poole>();
+        outsideBathroom = new ArrayList<Student_Poole>();
+    }
+
+    public boolean addStudent(Student_Poole newStudent){ /* tested and works*/
+        if (line.contains(newStudent)){
+            return false;
+        }
+        if (insideBathroom.contains(newStudent)){
+            return false;
+        }
+        if (outsideBathroom.contains(newStudent)){
+            return false;
+        }
+
+        return line.offer(newStudent);
+    }
+
+    public boolean studentExit(Student_Poole leavingStudent){ //has to also automatically add student
+        if (insideBathroom.contains(leavingStudent)){   //to bathroom (since student has left)
+            insideBathroom.remove(leavingStudent);
+            outsideBathroom.add(leavingStudent);
+
+            this.advanceLine();
+
+            return true;
+        }
+
+        else {
+            return false;
+        }
+
+
+    }
+
+    public ArrayList<Student_Poole> getInsideBathroom(){
+        return (ArrayList<Student_Poole>) insideBathroom.clone();
+    }
+
+
+    public ArrayList<Student_Poole> getOutsideBathroom() { return (ArrayList<Student_Poole>) outsideBathroom.clone(); }
+
+    /* public int findStudent(Studeaddnt myStudent){
+        // 0 if in bathroom, -1 if just left, spot in line if in line,
+        // -2 if not found at all.
+
+        if (insideBathroom.contains(myStudent)) return 0;
+        if (outsideBathroom.contains(myStudent)) return -1;
+        Iterator<Student> iterator = line.iterator();
+        int position = 1;
+        while(iterator.hasNext()){
+            Student nextStudent = iterator.next();
+            if (nextStudent.equals(myStudent)){
+                return position;
+            }
+            position++;
+        }
+
+        return -2;
+    } */
+
+    public String findStudent(Student_Poole myStudent){
+        if (insideBathroom.contains(myStudent)) return "Student is in Bathroom";
+        if (outsideBathroom.contains(myStudent)) return "Student has left the bathroom and is outside the bathroom";
+        if (line.contains(myStudent)) return "Student is in line";
+
+        return "Student has not gone to the bathroom yet, and is outside the bathroom";
+    }
+
+    public int getLineSize(){
+        return line.size();
+    }
+
+    public boolean advanceLine(){
+        if (insideBathroom.size() >= capacity) return false;
+        if (line.isEmpty()) return false;
+        Student_Poole nextStudent = line.poll();
+        insideBathroom.add(nextStudent);
+        return true;
+    }
+
+    public void test(){
+        return ;
+    }
+
+
+    public String toString(){
+        return "Line: " + line;
+    }
+
+}
